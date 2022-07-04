@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Avengers Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"/>
+    <style type="text/css">
+        .form-container{
+            margin: 3.0em;
+            width: 25%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="is-size-2 has-text-primary">Avenger's Form</h1>
+</div>
+
+<div class="form-container">
+    <form method="post" action="/avengers">
+        <div class="field">
+            <label class="label">Enter Avenger</label>
+            <div class="control">
+                <input class="input" type="text" name="characterName"/>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Enter Actor-Name</label>
+            <div class="control">
+                <input class="input" type="text" name="actorName"/>
+            </div>
+        </div>
+        <div class="field">
+            <input type="submit" class="button is-link" value="Submit"/>
+        </div>
+
+    </form>
+
+</div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Avenger</th>
+                <th>Actor Name</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="a, i : ${avengers}">
+            <td th:text="${i.count}"></td>
+            <td th:text="${a.characterName}"></td>
+            <td th:text="${a.actorName}"></td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
